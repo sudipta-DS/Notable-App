@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../App";
 import Note from "./Note";
 import NotfoundPage from "./404";
@@ -7,6 +7,10 @@ function Notes() {
   const context = useContext(AppContext);
   const notes = context.notes;
   const [pages, setPages] = useState([0, 10]); //startingIndex and endingIndex
+  useEffect(() => {
+    const allNotes = JSON.parse(localStorage.getItem("smart-hire"));
+    setPages(allNotes);
+  }, []);
   function handlePrevious() {
     setPages((prevPage) => {
       if (prevPage[0] - 10 < 0) {
