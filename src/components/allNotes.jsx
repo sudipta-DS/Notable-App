@@ -5,11 +5,11 @@ import NotfoundPage from "./404";
 
 function Notes() {
   const context = useContext(AppContext);
-  const notes = context.notes;
+  const [notes, setNotes] = [context.notes, context.setNotes];
   const [pages, setPages] = useState([0, 10]); //startingIndex and endingIndex
   useEffect(() => {
     const allNotes = JSON.parse(localStorage.getItem("smart-hire"));
-    setPages(allNotes);
+    setNotes(allNotes);
   }, []);
   function handlePrevious() {
     setPages((prevPage) => {
