@@ -7,10 +7,10 @@ function Notes() {
   const context = useContext(AppContext);
   const [notes, setNotes] = [context.notes, context.setNotes];
   const [pages, setPages] = useState([0, 10]); //startingIndex and endingIndex
-  useEffect(() => {
-    const allNotes = JSON.parse(localStorage.getItem("smart-hire"));
-    setNotes(allNotes);
-  }, []);
+  // useEffect(() => {
+  //   const allNotes = JSON.parse(localStorage.getItem("smart-hire"));
+  //   setNotes(allNotes);
+  // }, []);
   function handlePrevious() {
     setPages((prevPage) => {
       if (prevPage[0] - 10 < 0) {
