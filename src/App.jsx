@@ -8,19 +8,22 @@ import UpdateNote from "./components/UpdateNote";
 export const AppContext = createContext();
 
 function App() {
-  const [notes, setNotes] = useState([]);
-  useEffect(() => {
-    const allNotes = JSON.parse(localStorage.getItem("smart-hire"));
-    setNotes(allNotes ? allNotes : []);
-  }, []);
+  const allNotes = JSON.parse(localStorage.getItem("smart-hire"));
+  // setNotes(allNotes ? allNotes : []);
+  const [notes, setNotes] = useState(allNotes ? allNotes : []);
+  // useEffect(() => {
+  //   const allNotes = JSON.parse(localStorage.getItem("smart-hire"));
+  //   setNotes(allNotes ? allNotes : []);
+  // }, []);
   return (
     <AppContext.Provider value={{ notes, setNotes }}>
       <BrowserRouter>
         <Header />
 
         <Routes>
-          <Route path="/" element={<Notes />} />
+          <Route path="/Notable-App/" element={<Notes />} />
           <Route path="/add-note" element={<AddNote />} />
+          <Route path="/" element={<Notes />} />
           <Route path="/update-note" element={<UpdateNote />} />
         </Routes>
 
