@@ -8,13 +8,11 @@ import UpdateNote from "./components/UpdateNote";
 export const AppContext = createContext();
 
 function App() {
-  const allNotes = JSON.parse(localStorage.getItem("smart-hire"));
-  // setNotes(allNotes ? allNotes : []);
-  const [notes, setNotes] = useState(allNotes ? allNotes : []);
-  // useEffect(() => {
-  //   const allNotes = JSON.parse(localStorage.getItem("smart-hire"));
-  //   setNotes(allNotes ? allNotes : []);
-  // }, []);
+  const [notes, setNotes] = useState([]);
+  useEffect(() => {
+    const allNotes = JSON.parse(localStorage.getItem("smart-hire"));
+    setNotes(allNotes ? allNotes : []);
+  }, []);
   return (
     <AppContext.Provider value={{ notes, setNotes }}>
       <BrowserRouter>
